@@ -25,10 +25,10 @@ This Project is to build a whole pipeline for the data processing and machine le
 
 * data/disaster_categories.csv  # data to process
 * data/disaster_messages.csv  # data to process
-* data/process_data.py
-* data/InsertDatabaseName.db   # database to save clean data to
+* data/process_data.py  # data processing pipeline
+* data/DisasterResponse.db   # database to save clean data to
  
-* models/train_classifier.py
+* models/train_classifier.py # machine learning pipeline
 * models/classifier.pkl  # saved model 
 
-* README.md
+* README.md  #documentation
