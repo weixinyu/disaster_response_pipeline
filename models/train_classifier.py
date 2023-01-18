@@ -19,6 +19,9 @@ from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.metrics import f1_score, accuracy_score, precision_score, recall_score, classification_report
 
 def load_data(database_filepath):
+    '''
+        load data into the X, y and labels
+    '''
     # load data from database
     conn = sqlite3.connect(database_filepath)
     df = pd.read_sql('SELECT * FROM MessagesWithCategories', con = conn)
@@ -48,6 +51,9 @@ def tokenize(text):
 
 
 def build_model():
+    '''
+        build a pipline and set the hyperparameters
+    '''
     pipeline = Pipeline([
     ('vect', CountVectorizer(tokenizer=tokenize)),
     ('tfidf', TfidfTransformer()),
@@ -56,8 +62,8 @@ def build_model():
 
     # specify parameters for grid search
     parameters = {
-        'clf__n_estimators': [50],
-        'clf__min_samples_split': [2]
+        'clf__n_estimators': [10, 50],
+        'clf__min_samples_split': [2, 4]
 
     } 
 
@@ -68,12 +74,18 @@ def build_model():
 
 
 def evaluate_model(model, X_test, Y_test, category_names):
+    '''
+        evaluate the model with precision, recall and f1-score
+    '''
     Y_pred = model.predict(X_test)
     classification_result = classification_report(Y_test, Y_pred, target_names =category_names)
     print(classification_result)
 
 
 def save_model(model, model_filepath):
+    '''
+        save the model file
+    '''
     with open(model_filepath, 'wb') as file:
         pickle.dump(model, file)
 
