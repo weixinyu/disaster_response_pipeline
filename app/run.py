@@ -43,7 +43,14 @@ def index():
     genre_counts = df.groupby('genre').count()['message']
     genre_names = list(genre_counts.index)
     
+    categories_counts = df.iloc[:,4:].sum()
+    categories_names = list(categories_counts.index)
+    
+    direct_counts = df[df['genre'] == 'direct'].iloc[:,4:].sum()
+    news_counts = df[df['genre'] == 'news'].iloc[:,4:].sum()
+    social_counts = df[df['genre'] == 'social'].iloc[:,4:].sum()
     # create visuals
+    # TODO: Below is an example - modify to create your own visuals
     graphs = [
         {
             'data': [
