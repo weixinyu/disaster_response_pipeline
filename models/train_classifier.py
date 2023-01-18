@@ -3,6 +3,7 @@ import sys
 import nltk
 nltk.download(['punkt', 'wordnet', 'averaged_perceptron_tagger'])
 
+import pickle
 import sqlite3
 import re
 import numpy as np
