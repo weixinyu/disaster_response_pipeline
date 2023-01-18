@@ -68,7 +68,7 @@ def build_model():
 
 def evaluate_model(model, X_test, Y_test, category_names):
     Y_pred = model.predict(X_test)
-    classification_result = classification_report(y_test, y_pred, target_names =labels)
+    classification_result = classification_report(Y_test, Y_pred, target_names =category_names)
     print(classification_result)
 
 
