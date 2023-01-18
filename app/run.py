@@ -44,7 +44,6 @@ def index():
     genre_names = list(genre_counts.index)
     
     # create visuals
-    # TODO: Below is an example - modify to create your own visuals
     graphs = [
         {
             'data': [
@@ -61,6 +60,53 @@ def index():
                 },
                 'xaxis': {
                     'title': "Genre"
+                }
+            }
+        },
+        {
+            'data': [
+                Bar(
+                    x=categories_names,
+                    y=categories_counts
+                )
+            ],
+
+            'layout': {
+                'title': 'Distribution of Message Categories',
+                'yaxis': {
+                    'title': "Count"
+                },
+                'xaxis': {
+                    'title': "Category"
+                }
+            }
+        },
+        {
+            'data': [
+                Bar(
+                    x=categories_names,
+                    y=direct_counts,
+                    name='direct'
+                ),
+                Bar(
+                    x=categories_names,
+                    y=news_counts,
+                    name='news'
+                ),
+                Bar(
+                    x=categories_names,
+                    y=social_counts,
+                    name='social'
+                )
+            ],
+
+            'layout': {
+                'title': 'Distribution of Message Categories by Genres',
+                'yaxis': {
+                    'title': "Count"
+                },
+                'xaxis': {
+                    'title': "Category"
                 }
             }
         }
