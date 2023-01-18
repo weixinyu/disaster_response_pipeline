@@ -7,11 +7,6 @@ from sqlalchemy import create_engine
 def load_data(messages_filepath, categories_filepath):
     '''
         load data into the dataframe
-        Input:
-            messages_filepath: filepath for the messages
-            categories_filepath: filepath for the categories
-        Output:
-            df: combined dataset
     '''
     # load messages dataset
     messages = pd.read_csv(messages_filepath)
@@ -52,6 +47,9 @@ def clean_data(df):
     
 
 def save_data(df, database_filename):
+    '''
+        save database
+    '''
     engine = create_engine('sqlite:///{}'.format(database_filename))
     df.to_sql('MessagesWithCategories', engine, index=False)
 
